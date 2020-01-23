@@ -1,12 +1,11 @@
 'use strict';
 
-const SECRET = 'Donttellitssecret';
-
 const jwt = require('jsonwebtoken');
 const {server} = require('../lib/server');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server);
 
+const SECRET = 'Donttellitssecret';
 
 describe('Auth Router', () => {
   let testUser = {
@@ -14,26 +13,27 @@ describe('Auth Router', () => {
     password: 'pass',
   };
 
-  let badUser = {
-    username: 'bad',
-    password: 43,
-  };
+  // let badUser = {
+  //   username: 'bad',
+  //   password: 43,
+  // };
 
-  xit('can create a user', () => {
+  it('can create a user', () => {
     return mockRequest.post('/signup')
       .send(testUser)
       .then(data => {
+        // console.log(data);
         let token = jwt.verify(data.text, SECRET);
         expect(token).toBeDefined();
       });
   });
-  xit('returns all users', () => {
+  it('returns all users', () => {
     return mockRequest.get('/users')
       .then(data => {
         expect(data.body.count).toEqual(1);
       });
   });
-  xit('signs in a user', () => {
+  it('signs in a user', () => {
     return mockRequest.post('/signin')
       .auth(testUser.username, testUser.password)
       .then(data => {
