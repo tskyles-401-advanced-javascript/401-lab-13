@@ -1,6 +1,6 @@
-# LAB - 401-lab-12
+# LAB - 401-lab-13
 
-## Oauth
+## Bearer token
 
 ### Author: Travis Skyles
 
