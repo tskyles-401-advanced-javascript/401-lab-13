@@ -19,7 +19,7 @@ describe('Auth Router', () => {
     password: 43,
   };
 
-  it('can create a user', () => {
+  xit('can create a user', () => {
     return mockRequest.post('/signup')
       .send(testUser)
       .then(data => {
@@ -27,13 +27,13 @@ describe('Auth Router', () => {
         expect(token).toBeDefined();
       });
   });
-  it('returns all users', () => {
+  xit('returns all users', () => {
     return mockRequest.get('/users')
       .then(data => {
         expect(data.body.count).toEqual(1);
       });
   });
-  it('signs in a user', () => {
+  xit('signs in a user', () => {
     return mockRequest.post('/signin')
       .auth(testUser.username, testUser.password)
       .then(data => {
