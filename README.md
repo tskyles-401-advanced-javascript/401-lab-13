@@ -22,11 +22,12 @@
 #### `.env` requirements
 * `PORT` - Port Number
 * `MONGODB_URI` - URL to the running mongo instance/db
-* `CLIENT_ID`
-* `CLIENT_SECRET`
-* `TOKEN_SERVER`
-* `API_SERVER`
-* `REDIRECT`
+* `CLIENT_ID` - Oauth client id
+* `CLIENT_SECRET` - Oauth client secret
+* `TOKEN_SERVER`  - https://github.com/login/oauth/access_token
+* `API_SERVER` - https://api.github.com/user
+* `REDIRECT` - http://localhost:3000/oauth
+* `SECRET` - secret for signing tokens
 
 #### How to initialize/run your server app (where applicable)
 * Start App: `npm start`
@@ -34,6 +35,16 @@
   * Returns api-documentation
 * Endpoint: /docs
   * Returns JSdocs
+* Endpoint: /users
+  * Returns All users
+* Endpoint: /user
+  * Returns get user with Bearer Token
+* Endpoint: /signup
+  * Creates new user in the database with basic Auth
+* Endpoint: /oauth
+  * Creates new user in database using github oauth
+* Endpoint: /signin
+  * Checks if user is in database
 
   
 #### Tests
@@ -41,4 +52,4 @@
 * Eslint: `npm run lint`
 
 #### UML
-![]()
+![](./assets/lab-13.jpg)
