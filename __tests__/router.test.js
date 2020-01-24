@@ -5,7 +5,7 @@ const {server} = require('../lib/server');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server);
 
-process.env.SECRET = 'Donttellitssecret';
+let SECRET = 'Donttellitssecret';
 
 describe('Auth Router', () => {
   let testUser = {
@@ -23,7 +23,7 @@ describe('Auth Router', () => {
       .send(testUser)
       .then(data => {
         console.log(data.text);
-        let token = jwt.verify(data.text, process.env.SECRET);
+        let token = jwt.verify(data.text, SECRET);
         console.log(token);
         expect(token).toBeDefined();
       });
